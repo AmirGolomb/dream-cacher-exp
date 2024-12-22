@@ -43,7 +43,6 @@ class LocationGraph:
         self.plot_edges = None
         self.info_histogram = None
 
-
         # Add color bar
         sm = plt.cm.ScalarMappable(cmap=self.cmap, norm=self.norm)
         sm.set_array([])
@@ -51,8 +50,6 @@ class LocationGraph:
         cbar.set_label(f'Values')
         if diff_graph_label is not None:
             cbar.set_label(diff_graph_label)
-
-
 
     def calculate_histogram(self):
         print(f'self.history_location={self.history_location}')
@@ -75,8 +72,6 @@ def run():
     for graph_config in config['graphs']:
         location_graph = LocationGraph(config)  # Create a new graph object for each graph
         location_graph.history_location, location_graph.history_info = load_data_for_graph(config, graph_config)
-        location_graph.history_location = np.array(location_graph.history_location)
-        location_graph.history_info = np.array(location_graph.history_info)
 
         location_graph.fig.suptitle(graph_config['title'], fontsize=14)  # Set the graph title
         location_graph.calculate_histogram()

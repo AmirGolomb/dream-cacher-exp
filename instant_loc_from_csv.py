@@ -79,8 +79,6 @@ def run():
     for graph_config in config['graphs']:
         location_graph = LocationGraph(config)  # Create a new graph object for each graph
         location_graph.history_location, location_graph.history_info = load_data_for_graph(config, graph_config)
-        location_graph.history_location = np.array(location_graph.history_location)
-        location_graph.history_info = np.array(location_graph.history_info)
 
         two_history_locations.append(location_graph.history_location)
         two_history_infos.append(location_graph.history_info)

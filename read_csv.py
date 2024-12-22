@@ -1,6 +1,8 @@
 import ast
 import csv
 
+import numpy as np
+
 
 def load_data_for_graph(config, graph_config):
     history_location = [[], [], []]
@@ -8,6 +10,8 @@ def load_data_for_graph(config, graph_config):
     for file_config in graph_config['files']:
         load_data_from_csv(config, file_config['csv_file_path'], history_location, history_info, file_config['start_row'],
                   file_config['end_row'])  # Load data for the file range
+    history_location = np.array(history_location)
+    history_info = np.array(history_info)
     return history_location, history_info
 
 
