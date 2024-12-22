@@ -1,0 +1,110 @@
+{
+    "config": "downlink_show",
+    "downlink_show":
+    {
+        "data": "downlink",
+        "histogram_bins": [40, 40, 20],
+        "histogram_bins_difference_graph": [20, 20, 10],
+        "show_shabash": false,
+        "shabash_loc": [34.654662644425635, 31.6358856131658, 50],
+#        "find_shabash_bounds": [[31.631237024107612, 34.65422047295317, 0, -1000000], [31.634641889882253, 34.66058655611044, 300, 1000000]],
+        "find_shabash_bounds": [[30.631237024107612, 35.65422047295317, 0, -1000000], [30.634641889882253, 35.66058655611044, 300, 1000000]],
+        "filter_middle_info": false,
+        "high_info_floor": 80,
+        "low_info_ceil": 35,
+        "graphs": [
+            {
+                "title": "with evo",
+                "files": [
+                    {
+                        "csv_file_path": "csvs/nums_06_12_2024_13_24.csv",
+                        "start_row": 10000,
+                        "end_row": 26600
+                    },
+                    {
+                        "csv_file_path": "csvs/nums_06_12_2024_14_06.csv",
+                        "start_row": 17500,
+                        "end_row": 27900
+                    }
+                ]
+            },
+            {
+                "title": "without evo",
+                "files": [
+                    {
+                        "csv_file_path": "csvs/num_06_12_2024_12_12.csv",
+                        "start_row": 3200,
+                        "end_row": 18700
+                    },
+                    {
+                        "csv_file_path": "csvs/num_06_12_2024_12_41.csv",
+                        "start_row": 1450,
+                        "end_row": 24370
+                    }
+                ]
+            }
+        ]
+    },
+    "checking": {
+        "show_uplink_flag": false,
+        "histogram_bins": [40, 40, 20],
+        "show_shabash": false,
+        "shabash_loc": [34.654662644425635, 31.6358856131658, 50],
+        "graphs": [
+            {
+                "title": "without evo",
+                "files": [
+                    {
+                        "csv_file_path": "csvs/num_06_12_2024_12_41.csv",
+                        "start_row": 1450,
+                        "end_row": 24370
+                    }
+                ]
+            }
+        ]
+    },
+    "rssi_show":
+        {
+          "data": "rssi",
+          "histogram_bins": [ 40, 40, 20 ],
+          "histogram_bins_difference_graph": [20, 20, 10],
+          "show_shabash": false,
+          "shabash_loc": [ 34.654662644425635, 31.6358856131658, 50 ],
+          "find_shabash_bounds": [[30.631237024107612, 35.65422047295317, 0, -1000000], [30.634641889882253, 35.66058655611044, 300, 1000000]],
+          "filter_middle_info": false,
+          "high_info_floor": 80,
+          "low_info_ceil": 35,
+          "graphs": [
+            {
+              "title": "with evo",
+              "files": [
+                {
+                  "csv_file_path": "csvs/rssi_06_12_2024_13_24.csv",
+                  "start_row": 9848, # num starts 152 *before* rssi - thats why i do 10000 - 152 = 1698
+                  "end_row": 26448 # 26600 - 152 = 26448
+                },
+                {
+                  "csv_file_path": "csvs/rssi_06_12_2024_14_06.csv",
+                  "start_row": 17900, #17500, # num starts 273 lines after rssi - thats why i do 17500 + 273 = 17773
+                  "end_row": 28000, #28173 # 27900 + 273 = 28173
+                }
+              ]
+            },
+            {
+              "title": "without evo",
+              "files": [
+                {
+                  "csv_file_path": "csvs/rssi_06_12_2024_12_12.csv",
+                  "start_row": 3200, # doesnt need to change
+                  "end_row": 18700
+                },
+                {
+                  "csv_file_path": "csvs/rssi_06_12_2024_12_41.csv",
+                  "start_row": 1698, # num starts 248 lines after rssi - thats why i do 1450 + 248 = 1698
+                  "end_row": 24618 # 24370 + 248 = 24618
+                }
+              ]
+            }
+          ]
+        }
+}

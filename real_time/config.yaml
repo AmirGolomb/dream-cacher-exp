@@ -1,0 +1,7 @@
+{
+  'show_rssi_flag': True,
+  'show_uplink_flag': False,
+  'histogram_bins': [30, 30, 10],
+  'shabash_loc': [34.65720, 31.645779, 50]
+  # 'lat': 31.63323621658554, 'lon': 34.657094270580046
+}
