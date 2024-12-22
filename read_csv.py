@@ -20,7 +20,6 @@ def load_data_from_csv(config, csv_file_path, history_location, history_info, st
             if row['lat'] and row['lon'] and row['aboveSeaLevel']:  # Ensure no missing data
                 if config['data'] == 'downlink':
                     info = float(row['downLinkPercent'])
-                    print(f'info={info}')
                 elif config['data'] == 'uplink':
                     info = float(row['upLinkPercent'])
                 elif config['data'] == 'rssi':

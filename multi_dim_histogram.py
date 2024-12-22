@@ -20,13 +20,12 @@ def multi_dim_histogram(sample, values, bins: int | Sequence[int]):
     print(f'sample shape: {np.shape(sample)}')
     print(f'values unique={np.unique(values)}')
     print(f'bins shape: {np.shape(bins)}')
-    # sample = sample.T
-    hist_sum, histogram_edges = np.histogramdd(sample, bins=bins, range=None, weights=values)
+    hist_sum, histogram_edges = np.histogramdd(sample.T, bins=bins, range=None, weights=values)
     print(f'hist_sum shape={np.shape(hist_sum)}')
     print(f'hist_sum={hist_sum}')
 
     # Create a histogram for counts of points
-    hist_count, _ = np.histogramdd(sample, bins=bins, range=None)
+    hist_count, _ = np.histogramdd(sample.T, bins=bins, range=None)
 
     # Avoid division by zero: set bins with no points to NaN
     with np.errstate(divide='ignore', invalid='ignore'):
