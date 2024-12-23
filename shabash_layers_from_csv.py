@@ -11,8 +11,8 @@ import matplotlib.colors as mcolors
 
 from find_shabash import find_shabash
 from find_shabash_2d import find_shabash_2d
-from kde_layer_testing import cluster_and_visualize, kde_layer_clustering
 from read_csv import load_data_for_graph
+from separate_layers import group_heights_by_count, draw_groups_in_3d
 from subtract_histograms import subtract_histograms
 from multi_dim_histogram import multi_dim_histogram
 from display_histogram import display_histogram
@@ -72,13 +72,16 @@ def run():
     for graph_config in config['graphs']:
         # location_graph = LocationGraph(config)  # Create a new graph object for each graph
         history_location, history_info = load_data_for_graph(config, graph_config)
-        height_groupings = kde_layer_clustering(history_location[2])
+        # height_groupings = kde_layer_clustering(history_location[2])
+        _, height_groupings = group_heights_by_count(history_location[2])
 
-        print('length', [len(g) for g in height_groupings])
+        draw_groups_in_3d(history_location, height_groupings)
+
         for grouping in height_groupings:
+            print(f'grouping={grouping}')
             locs_in_grouping = history_location[:, grouping]
             infos_in_grouping = history_info[grouping]
-            find_shabash_2d(locs_in_grouping[0], locs_in_grouping[1], infos_in_grouping)
+            # find_shabash_2d(locs_in_grouping[0], locs_in_grouping[1], infos_in_grouping)
 
 
     plt.show()  # Keep all graph windows open

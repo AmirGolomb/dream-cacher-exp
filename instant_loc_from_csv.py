@@ -93,9 +93,6 @@ def run():
         for grouping in height_groupings:
             locs_in_grouping = location_graph.history_location[:, grouping]
             infos_in_grouping = location_graph.history_info[grouping]
-            print(f'locs_in_grouping[0]={locs_in_grouping[0]}')
-            print(f'locs_in_grouping[1]={locs_in_grouping[1]}')
-            print(f'infos_in_grouping={infos_in_grouping}')
             # find_shabash_2d(locs_in_grouping[0], locs_in_grouping[1], infos_in_grouping)
 
         # raw_comm_stregth =
