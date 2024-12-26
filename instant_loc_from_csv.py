@@ -11,7 +11,6 @@ import matplotlib.colors as mcolors
 
 from find_shabash import find_shabash
 from find_shabash_2d import find_shabash_2d
-from kde_layer_testing import cluster_and_visualize, kde_layer_clustering
 from read_csv import load_data_for_graph
 from subtract_histograms import subtract_histograms
 from multi_dim_histogram import multi_dim_histogram

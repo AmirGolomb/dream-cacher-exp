@@ -18,12 +18,6 @@ def group_heights_by_count(heights, count_threshold=30):
     # Get unique heights and their counts
     heights_rounded = np.round(heights)  # Round heights to the nearest integer
     unique_heights, counts = np.unique(heights_rounded, return_counts=True)
-    unique_heights2, counts2 = np.unique(heights, return_counts=True)
-
-    print(f'heights={heights}')
-    print(f'heights_rounded={heights_rounded}')
-    print(f'counts={counts}')
-    print(f'counts2={counts2}')
 
     # Filter heights with counts above the threshold
     valid_heights = unique_heights[counts >= count_threshold]
