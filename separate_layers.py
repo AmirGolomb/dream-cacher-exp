@@ -66,6 +66,8 @@ def draw_groups_in_3d(positions, index_groups):
     Returns:
     - None. Displays the 3D plot.
     """
+    print(f'positions={positions}')
+    print(f'index_groups={index_groups}')
     # Ensure positions is a numpy array
     positions = np.array(positions)
 

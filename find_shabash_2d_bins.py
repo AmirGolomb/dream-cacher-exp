@@ -1,10 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def find_shabash_2d_bins(x_history, y_history, evodif_history):
+def find_shabash_2d_bins(x_history, y_history, evodif_history, plot=False):
     """
-    Finds the position of the source by averaging the positions of points where evodif > 60.
-    Also plots all points, highlights points with evodif > 60, and marks the source position.
+    Finds the position of the source by averaging the positions of points with evodif in the top 10%.
+    Includes all points with evodif equal to or greater than the cutoff value in cases of ties.
+    Also plots all points, highlights selected points, and marks the source position.
 
     Parameters:
     - x_history (np.ndarray): Array of x-coordinates of points.
@@ -14,16 +15,19 @@ def find_shabash_2d_bins(x_history, y_history, evodif_history):
     Returns:
     - source_position (tuple): The estimated position of the source as (x, y).
     """
-    print(234567)
     # Ensure the inputs are NumPy arrays
     x_history = np.asarray(x_history)
     y_history = np.asarray(y_history)
     evodif_history = np.asarray(evodif_history)
+    print(f'evodif_history={np.unique(evodif_history, return_counts=True)}')
 
-    # Find indices of points where evodif > 60
-    high_evodif_indices = evodif_history > 60
+    # Determine the cutoff for the top 10% of evodif values
+    threshold = np.percentile(evodif_history, 95)
 
-    # Extract x and y coordinates of points with evodif > 60
+    # Include all points with evodif >= threshold
+    high_evodif_indices = evodif_history >= threshold
+
+    # Extract x and y coordinates of selected points
     high_evodif_x = x_history[high_evodif_indices]
     high_evodif_y = y_history[high_evodif_indices]
 
@@ -32,30 +36,30 @@ def find_shabash_2d_bins(x_history, y_history, evodif_history):
         source_x = np.mean(high_evodif_x)
         source_y = np.mean(high_evodif_y)
     else:
-        return None
-        # raise ValueError("No points with evodif > 60 found.")
+        raise ValueError("No points found in the top 10% of evodif values.")
 
     source_position = (source_x, source_y)
 
-    # Plot all points
-    plt.figure(figsize=(10, 8))
-    plt.scatter(x_history, y_history, label="All points", alpha=0.6, color="blue")
+    if plot:
+        # Plot all points
+        plt.figure(figsize=(10, 8))
+        plt.scatter(x_history, y_history, label="All points", alpha=0.6, color="blue")
 
-    # Highlight points with evodif > 60
-    plt.scatter(high_evodif_x, high_evodif_y, label="evodif > 60", alpha=0.8, color="orange")
+        # Highlight points with evodif >= threshold
+        plt.scatter(high_evodif_x, high_evodif_y, label=f"Top 10% (diff >= {threshold:.2f})", alpha=0.8, color="orange")
 
-    # Mark the source position with a red X
-    plt.scatter(source_x, source_y, color="red", label="Source Position", marker="x", s=100)
+        # Mark the source position with a red X
+        plt.scatter(source_x, source_y, color="red", label="Source Position", marker="x", s=100)
 
-    # Add labels and legend
-    plt.xlabel("X Coordinate")
-    plt.ylabel("Y Coordinate")
-    plt.title("Source Estimation from evodif > 60")
-    plt.legend()
-    plt.grid(True)
+        # Add labels and legend
+        plt.xlabel("X Coordinate")
+        plt.ylabel("Y Coordinate")
+        plt.title("Source Estimation from Top 10% evodif")
+        plt.legend()
+        plt.grid(True)
 
-    # Show the plot
-    plt.show()
+        # Show the plot
+        plt.show()
 
     return source_position
 

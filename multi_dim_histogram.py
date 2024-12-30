@@ -11,18 +11,7 @@ def multi_dim_histogram(sample, values, bins: int | Sequence[int]):
             raise ValueError("x, y, and values must have the same length")
 
     # Create a histogram for sums of values
-    rng = np.random.default_rng()
-    random = rng.normal(size=(10, 3))
-    print(f'random={np.shape(random)}')
-    print(f'random={random}')
-    print(f'len bins={len(bins)}')
-    print(f'len sample={sample}')
-    print(f'sample shape: {np.shape(sample)}')
-    print(f'values unique={np.unique(values)}')
-    print(f'bins shape: {np.shape(bins)}')
     hist_sum, histogram_edges = np.histogramdd(sample.T, bins=bins, range=None, weights=values)
-    print(f'hist_sum shape={np.shape(hist_sum)}')
-    print(f'hist_sum={hist_sum}')
 
     # Create a histogram for counts of points
     hist_count, _ = np.histogramdd(sample.T, bins=bins, range=None)

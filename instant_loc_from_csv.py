@@ -12,7 +12,7 @@ import matplotlib.colors as mcolors
 from find_shabash import find_shabash
 from find_shabash_2d import find_shabash_2d
 from read_csv import load_data_for_graph
-from subtract_histograms import subtract_histograms
+from subtract_histograms import subtraction_histograms
 from multi_dim_histogram import multi_dim_histogram
 from display_histogram import display_histogram
 
@@ -86,12 +86,12 @@ def run():
         # print(f'location_graph.history_info={location_graph.history_info}')
 
         # cluster_and_visualize(location_graph.history_location)
-        height_groupings = kde_layer_clustering(location_graph.history_location[2])
+        # height_groupings = kde_layer_clustering(location_graph.history_location[2])
         # print(f'height_groupings={height_groupings}')
-        print('length', [len(g) for g in height_groupings])
-        for grouping in height_groupings:
-            locs_in_grouping = location_graph.history_location[:, grouping]
-            infos_in_grouping = location_graph.history_info[grouping]
+        # print('length', [len(g) for g in height_groupings])
+        # for grouping in height_groupings:
+        #     locs_in_grouping = location_graph.history_location[:, grouping]
+        #     infos_in_grouping = location_graph.history_info[grouping]
             # find_shabash_2d(locs_in_grouping[0], locs_in_grouping[1], infos_in_grouping)
 
         # raw_comm_stregth =
@@ -109,7 +109,7 @@ def run():
 
 
     difference_graph = LocationGraph(config, is_diff_graph=True, diff_graph_label=f'{two_graphs_labels[0]}-{two_graphs_labels[1]}')
-    diff_hist, common_edges = subtract_histograms(two_graphs[0].history_location, two_graphs[0].history_info, two_graphs[1].history_location, two_graphs[1].history_info, config['histogram_bins_difference_graph'])
+    diff_hist, common_edges = subtraction_histograms(two_graphs[0].history_location, two_graphs[0].history_info, two_graphs[1].history_location, two_graphs[1].history_info, config['histogram_bins_difference_graph'])
     difference_graph.plot_edges = common_edges
     difference_graph.info_histogram = diff_hist
 
