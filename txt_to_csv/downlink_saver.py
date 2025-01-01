@@ -35,16 +35,16 @@ if __name__ == '__main__':
 
 
     # Create the 'csvs' subfolder if it doesn't exist
-    os.makedirs("csvs", exist_ok=True)
+    os.makedirs("../csvs", exist_ok=True)
 
     # Find an available file name in the 'csvs' folder
     base_file_name = "rssi_06_12_2024_15_10"
     file_index = 1
-    csv_file_path = os.path.join("csvs", f"{base_file_name}.csv")
+    csv_file_path = os.path.join("../csvs", f"{base_file_name}.csv")
 
     while os.path.exists(csv_file_path):
         file_index += 1
-        csv_file_path = os.path.join("csvs", f"{base_file_name}_v{file_index}.csv")
+        csv_file_path = os.path.join("../csvs", f"{base_file_name}_v{file_index}.csv")
 
     # Initialize the CSV file and write the header
     with open(csv_file_path, mode='w', newline='') as file:

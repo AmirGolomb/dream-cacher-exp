@@ -1,5 +1,6 @@
 from typing import Sequence
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def subtraction_histograms(sample1, values1, sample2, values2, bins: Sequence[int]):
@@ -172,9 +173,7 @@ def average_loc_and_corresponding_dif(average_locations1, average_locations2, av
     return final_locations, final_values
 
 
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-import numpy as np
+
 
 
 def plot_3d_locations_with_values(final_locations, final_values, cmap='viridis'):

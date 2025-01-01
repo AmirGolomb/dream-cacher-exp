@@ -41,20 +41,6 @@ class LineModel3D(BaseEstimator, RegressorMixin):
         return -np.mean(distances)  # Negative because RANSAC maximizes the score
 
 
-# # Example noisy 3D points
-# shabash_loc_2d_and_zs = [
-#     (1, 1, 80),
-#     (2, 2, 83),
-#     (3, 3, 85),
-#     (4, 4, 77),  # A point close to z=77
-#     (5, 5, 95),
-#     (6, 6, 90),
-#     (7, 7, 92),
-#     (50, 50, 300),  # Outlier
-#     (60, 60, -100),  # Outlier
-# ]
-
-
 def custom_ransac(shabash_loc_2d_and_zs, ground_asl):
     # Convert list to numpy array
     points = np.array(shabash_loc_2d_and_zs)

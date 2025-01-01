@@ -7,8 +7,8 @@ import yaml
 
 from rssi_graph import RssiGraph
 from real_time.location_graph import LocationGraph
-from thread_helper import CaptureThread as CaptureThread3
-from thread_helper import TelemetryThread as TelemetryThread3
+from thread_helper import CaptureThread
+from thread_helper import TelemetryThread
 
 # based on eyesatop_basic_example
 
@@ -37,8 +37,8 @@ if __name__ == '__main__':
 
     closing = False
     capture_queue = Queue(2)
-    capture_thread = CaptureThread3('tcp://127.0.0.1:{}?listen'.format(ns.video_port), capture_queue, lock)
-    telemetry_thread = TelemetryThread3(ns.telemetry_port, ns.telemetry_bufsize, lock)
+    capture_thread = CaptureThread('tcp://127.0.0.1:{}?listen'.format(ns.video_port), capture_queue, lock)
+    telemetry_thread = TelemetryThread(ns.telemetry_port, ns.telemetry_bufsize, lock)
 
     capture_thread.start()
     telemetry_thread.start()

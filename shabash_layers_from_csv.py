@@ -9,17 +9,13 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 import matplotlib.colors as mcolors
 
-from custom_ransac import custom_ransac
-from find_shabash import find_shabash
-from find_shabash_2d import find_shabash_2d
+from ransac_3d import custom_ransac
 from find_shabash_2d_bins import find_shabash_2d_bins
 from plot_shabash_ransac import plot_3d_data
-from points_from_histogram_3d import points_from_histogram, points_from_histogram_avg_loc
-from ransac_find_shabash import ransac_find_shabash
+
 from read_csv import load_data_for_graph
 from separate_layers import group_heights_by_count, draw_groups_in_3d
-from subtract_histograms import subtraction_histograms, subtraction_histograms_avg_loc, average_loc_of_points_per_bin, \
-    average_loc_and_corresponding_dif, plot_3d_locations_with_values
+from subtract_histograms import  subtraction_histograms_avg_loc, average_loc_of_points_per_bin, average_loc_and_corresponding_dif
 from multi_dim_histogram import multi_dim_histogram
 from display_histogram import display_histogram
 
