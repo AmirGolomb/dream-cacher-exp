@@ -22,23 +22,26 @@ def find_shabash_2d_bins(x_history, y_history, evodif_history, plot=False):
     print(f'evodif_history={np.unique(evodif_history, return_counts=True)}')
 
     # Determine the cutoff for the top 10% of evodif values
-    threshold = np.percentile(evodif_history, 95)
+    threshold = np.percentile(evodif_history, 97)
 
     # Include all points with evodif >= threshold
-    high_evodif_indices = evodif_history >= threshold
+    # high_evodif_indices = evodif_history >= threshold
+    high_evodif_indices = evodif_history >= 70
 
     # Extract x and y coordinates of selected points
     high_evodif_x = x_history[high_evodif_indices]
     high_evodif_y = y_history[high_evodif_indices]
 
+    source_position = None
     # Calculate the average position of these points
     if len(high_evodif_x) > 0 and len(high_evodif_y) > 0:
         source_x = np.mean(high_evodif_x)
         source_y = np.mean(high_evodif_y)
-    else:
-        raise ValueError("No points found in the top 10% of evodif values.")
+        source_position = (source_x, source_y)
+    # else:
+    #     raise ValueError("No points found in the top 10% of evodif values.")
 
-    source_position = (source_x, source_y)
+
 
     if plot:
         # Plot all points

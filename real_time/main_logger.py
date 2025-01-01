@@ -55,9 +55,9 @@ if __name__ == '__main__':
     while not closing and not capture_thread.isFinished() :
         current_frame = capture_queue.get(timeout=timeout)
         telemetry = telemetry_thread.getLatestAsDict()
-        if config['show_rssi_flag']:
-            rssi_graph.update(telemetry)
-        location_graph.update(telemetry)
+        # if config['show_rssi_flag']:
+        #     rssi_graph.update(telemetry)
+        # location_graph.update(telemetry)
        
         imshow("EyesAtop example", current_frame)
         if cv2.waitKey(1) == 27:

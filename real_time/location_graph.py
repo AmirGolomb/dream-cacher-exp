@@ -5,7 +5,7 @@ import matplotlib.cm as cm
 import matplotlib.colors as mcolors
 
 from multi_dim_histogram import multi_dim_histogram
-from display_histogram import display_histogram_3d
+# from display_histogram import display_histogram_3d
 
 matplotlib.use('Qt5Agg')  # Try TkAgg, or you can use 'Qt5Agg' or 'Agg'
 
@@ -61,12 +61,12 @@ class LocationGraph:
             if self.config['show_uplink_flag']:
                 uplink_hist, edges = multi_dim_histogram(self.history_location, self.history_uplink, bins=self.histogram_bins)
                 self.uplink_hist_ax.clear()
-                display_histogram_3d(uplink_hist, edges, self.uplink_hist_ax, self.axis_labels, self.cmap, self.norm, self.shabash_loc)
+                # display_histogram_3d(uplink_hist, edges, self.uplink_hist_ax, self.axis_labels, self.cmap, self.norm, self.shabash_loc)
                 self.uplink_hist_ax.set_title('uplink')
 
             downlink_hist, edges = multi_dim_histogram(self.history_location, self.history_downlink, bins=self.histogram_bins)
             self.downlink_hist_ax.clear()
-            display_histogram_3d(downlink_hist, edges, self.downlink_hist_ax, self.axis_labels, self.cmap, self.norm, self.shabash_loc)
+            # display_histogram_3d(downlink_hist, edges, self.downlink_hist_ax, self.axis_labels, self.cmap, self.norm, self.shabash_loc)
             self.downlink_hist_ax.set_title('downlink')
 
         self.fig.canvas.draw_idle()

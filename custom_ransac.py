@@ -5,6 +5,9 @@ from sklearn.base import BaseEstimator, RegressorMixin
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
+from move_fig_to_screen_center import move_fig_to_screen_center
+
+
 # Custom 3D Line Model for RANSAC
 class LineModel3D(BaseEstimator, RegressorMixin):
     def fit(self, X, y=None):
@@ -103,6 +106,8 @@ def custom_ransac(shabash_loc_2d_and_zs, ground_asl):
     ax.set_zlabel('Z')
     ax.legend()
     plt.title("3D Line Fitting with RANSAC")
+    # fig.canvas.manager.window.move(200, 200)
+    move_fig_to_screen_center(fig)
     plt.show()
 
     return (intersection_x, intersection_y, ground_asl), line_point, direction_vector

@@ -135,7 +135,7 @@ def run():
         grouping_z = np.mean(locs_in_grouping[2])
         infos_in_grouping = final_values[grouping]
         # find_shabash_2d(locs_in_grouping[0], locs_in_grouping[1], infos_in_grouping)
-        shabash_loc_2d = find_shabash_2d_bins(locs_in_grouping[0], locs_in_grouping[1], infos_in_grouping, plot=False)
+        shabash_loc_2d = find_shabash_2d_bins(locs_in_grouping[0], locs_in_grouping[1], infos_in_grouping, plot=True)
 
         shabash_loc_2d_and_zs.append((shabash_loc_2d[0], shabash_loc_2d[1], grouping_z))
 
